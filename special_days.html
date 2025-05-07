@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="responsive.css">
+
+  <title>Forever Ours 💖</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #ffe4ec, #ffcad4);
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #4b2c36;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.8em;
+      color: #d63384;
+      margin-bottom: 1.5em;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+    }
+    .section-title {
+      color: #d63384;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+    ul {
+      padding: 0;
+    }
+    li {
+      margin-top: 10px;
+      background: #ffd6e0;
+      padding: 10px;
+      border-radius: 12px;
+      color: #4b2c36;
+    }
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: #c71585;
+      font-size: 0.9em;
+    }
+    .timeline {
+      position: relative;
+      margin: 40px 0;
+      padding-left: 20px;
+      border-left: 4px solid #ff6f91;
+    }
+    .timeline-item {
+      margin-bottom: 20px;
+      padding-left: 20px;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      background-color: #d63384;
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px #ffcad4;
+    }
+    .timeline-date {
+      font-weight: bold;
+      color: #d63384;
+    }
+    .timeline-desc {
+      background: #fff0f6;
+      padding: 8px 15px;
+      border-radius: 10px;
+      color: #4b2c36;
+      margin-top: 5px;
+    }
+    .back-button {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 16px;
+      background-color: #ff6f91;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(255, 111, 145, 0.3);
+      font-weight: bold;
+    }
+    .back-button:hover {
+      background-color: #e45775;
+    }
+    .days-counter {
+      text-align: right;
+      font-size: 1.2em;
+      color: #d63384;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .time-counter {
+      text-align: right;
+      font-size: 1em;
+      color: #6d214f;
+      margin-bottom: 20px;
+    }
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #ff6f91;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      font-size: 1.5em;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 105, 135, 0.4);
+      animation: float 2s infinite;
+    }
+    .scroll-top:hover {
+      background-color: #e45775;
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="days-counter" id="daysCounter"></div>
+    <div class="time-counter" id="timeCounter"></div>
+    <div class="card">
+      <div class="section-title">📆 Our Special Moments</div>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-date">Jan 26, 2023</div><div class="timeline-desc">The day which we got to know about each other.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Feb 13, 2023</div><div class="timeline-desc">He said that my dress looked good and that I was looking beautiful.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Feb 18, 2023</div><div class="timeline-desc">The day when I heard his voice and met him for the first time.</div></div>
+        <div class="timeline-item"><div class="timeline-date">March 9, 2023</div><div class="timeline-desc">He gave me a chocolate for the first time.</div></div>
+        <div class="timeline-item"><div class="timeline-date">May 13, 2023</div><div class="timeline-desc">He called me his best friend.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Jan 26, 2024</div><div class="timeline-desc">Our First Anniversary</div></div>
+        <div class="timeline-item"><div class="timeline-date">March 17, 2024</div><div class="timeline-desc">He touched me for the first time and it is the first time I went on a bike ride with him.</div></div>
+        <div class="timeline-item"><div class="timeline-date">June 25, 2024</div><div class="timeline-desc">He played a prank on me saying that he loves me so much.</div></div>
+        <div class="timeline-item"><div class="timeline-date">July 17, 2024</div><div class="timeline-desc">He gave me 2 lollipops and gave me send off.</div></div>
+        <div class="timeline-item"><div class="timeline-date">August 17, 2024</div><div class="timeline-desc">He accepted my proposal.</div></div>
+        <div class="timeline-item"><div class="timeline-date">August 20, 2024</div><div class="timeline-desc">He heart fully accepted my request.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Aug 27, 2024</div><div class="timeline-desc">We met for the first time in person after committing. We kissed each other. I kissed on his cheek. He kissed me.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Aug 29, 2024</div><div class="timeline-desc">We went to a movie "Saripodha Sanivaaram". His hands got enough warmth.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Sep 25, 2024</div><div class="timeline-desc">He again confessed that his love is true.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Oct 24, 2024</div><div class="timeline-desc">He told me and confirmed that he would marry me.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Dec 29, 2024</div><div class="timeline-desc">We met each other on train. He travelled and waited for 7 hours just to be with me for an hour.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Jan 13, 2025</div><div class="timeline-desc">We clicked some good pics and videos.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Jan 18, 2025</div><div class="timeline-desc">I drove his scooty while he is sitting at the back.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Jan 26, 2025</div><div class="timeline-desc">Our Second Anniversary.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Feb 1, 2025</div><div class="timeline-desc">He surprised me with a pair of jhumkas.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Feb 4, 2025</div><div class="timeline-desc">He again surprised me with another pair of jhumkas.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Mar 9, 2025</div><div class="timeline-desc">His Birthday and I tried to sing songs for him and made a promise and wrote a small paragraph for him.</div></div>
+        <div class="timeline-item"><div class="timeline-date">Mar 29, 2025</div><div class="timeline-desc">We met again in the train. I surprised him with 20 gifts cause he is 20 years old now.</div></div>
+   
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-top" onclick="scrollToTop()">❤️</button>
+
+  <script>
+    const anniversary = new Date('2024-08-17T08:00:00');
+
+    function updateTime() {
+      const now = new Date();
+      let diff = Math.floor((now - anniversary) / 1000);
+
+      const days = Math.floor(diff / (3600 * 24));
+      diff %= 3600 * 24;
+      const hours = Math.floor(diff / 3600);
+      diff %= 3600;
+      const minutes = Math.floor(diff / 60);
+      const seconds = diff % 60;
+
+      document.getElementById('daysCounter').textContent = `💗 It's been ${days} days since our Anniversary (Aug 17, 2024)`;
+      document.getElementById('timeCounter').textContent = `⏰ That's ${days} days ${hours} hrs ${minutes} min ${seconds} sec of love ❤️`;
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
