@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="responsive.css">
+
+  <title>🎯 Bucket List</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #ffe4ec, #ffcad4);
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      color: #4b2c36;
+    }
+    h1 {
+      text-align: center;
+      color: #d63384;
+      margin-bottom: 10px;
+    }
+    .input-area {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 60%;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+    }
+    button {
+      padding: 10px 15px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff6f91;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e45775;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: 10px auto;
+    }
+    li {
+      background-color: #fff0f5;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(255, 105, 135, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btns {
+      display: flex;
+      gap: 10px;
+    }
+    .completed-title {
+      text-align: center;
+      color: #6d214f;
+      margin-top: 30px;
+      font-size: 1.3em;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎯 Our Bucket List</h1>
+
+  <div class="input-area">
+    <input type="text" id="bucketInput" placeholder="Add a cute goal together..." />
+    <button onclick="addBucketItem()">Add</button>
+  </div>
+
+  <ul id="bucketList"></ul>
+
+  <div class="completed-title">✅ Completed Goals</div>
+  <ul id="completedList"></ul>
+
+  <script>
+    const bucketList = document.getElementById('bucketList');
+    const completedList = document.getElementById('completedList');
+    const input = document.getElementById('bucketInput');
+
+    // Load saved data
+    window.onload = () => {
+      const items = JSON.parse(localStorage.getItem('bucketItems')) || [];
+      const done = JSON.parse(localStorage.getItem('completedItems')) || [];
+
+      items.forEach(text => createListItem(text, false));
+      done.forEach(text => createListItem(text, true));
+    };
+
+    function addBucketItem() {
+      const text = input.value.trim();
+      if (text === "") return;
+      createListItem(text, false);
+      saveItem(text, false);
+      input.value = "";
+    }
+
+    function createListItem(text, isCompleted) {
+      const li = document.createElement('li');
+      li.textContent = text;
+
+      const btns = document.createElement('div');
+      btns.className = 'btns';
+
+      if (!isCompleted) {
+        const doneBtn = document.createElement('button');
+        doneBtn.textContent = "✔️";
+        doneBtn.onclick = () => {
+          li.remove();
+          removeItem(text, false);
+          createListItem(text, true);
+          saveItem(text, true);
+        };
+
+        const delBtn = document.createElement('button');
+        delBtn.textContent = "❌";
+        delBtn.onclick = () => {
+          li.remove();
+          removeItem(text, false);
+        };
+
+        btns.appendChild(doneBtn);
+        btns.appendChild(delBtn);
+        li.appendChild(btns);
+        bucketList.appendChild(li);
+      } else {
+        const delBtn = document.createElement('button');
+        delBtn.textContent = "🗑️";
+        delBtn.onclick = () => {
+          li.remove();
+          removeItem(text, true);
+        };
+        btns.appendChild(delBtn);
+        li.appendChild(btns);
+        completedList.appendChild(li);
+      }
+    }
+
+    function saveItem(text, isCompleted) {
+      const key = isCompleted ? 'completedItems' : 'bucketItems';
+      const saved = JSON.parse(localStorage.getItem(key)) || [];
+      saved.push(text);
+      localStorage.setItem(key, JSON.stringify(saved));
+    }
+
+    function removeItem(text, isCompleted) {
+      const key = isCompleted ? 'completedItems' : 'bucketItems';
+      let saved = JSON.parse(localStorage.getItem(key)) || [];
+      saved = saved.filter(item => item !== text);
+      localStorage.setItem(key, JSON.stringify(saved));
+    }
+  </script>
+</body>
+</html>
