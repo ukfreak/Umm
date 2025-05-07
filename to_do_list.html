@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="responsive.css">
+
+  <title>To Do List 📝</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffe4ec, #ffd6e0);
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #4b2c36;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #d63384;
+      font-size: 2.2em;
+    }
+
+    .input-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #d63384;
+      width: 60%;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #ff6f91;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 16px;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #e45775;
+    }
+
+    .section {
+      max-width: 700px;
+      margin: 30px auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #c2185b;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #fff0f5;
+      border-radius: 14px;
+      padding: 10px 15px;
+      margin: 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1em;
+    }
+
+    li.completed {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    .actions button {
+      margin-left: 8px;
+      font-size: 0.9em;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    .done-btn {
+      background-color: #81c784;
+    }
+
+    .delete-btn {
+      background-color: #e57373;
+    }
+
+    .done-btn:hover {
+      background-color: #66bb6a;
+    }
+
+    .delete-btn:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <h1>Today's To Do List 📝</h1>
+
+  <div class="input-container">
+    <input type="text" id="taskInput" placeholder="Did you ask me anything to do or do you anything to do, write it here..?" />
+    <button onclick="addTask()">Add</button>
+  </div>
+
+  <div class="section">
+    <h2>📌 Tasks</h2>
+    <ul id="taskList"></ul>
+  </div>
+
+  <div class="section">
+    <h2>✅ Completed</h2>
+    <ul id="completedList"></ul>
+  </div>
+
+  <script>
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
+    const completedList = document.getElementById('completedList');
+
+    function saveTasks() {
+      localStorage.setItem('tasks', taskList.innerHTML);
+      localStorage.setItem('completedTasks', completedList.innerHTML);
+    }
+
+    function loadTasks() {
+      taskList.innerHTML = localStorage.getItem('tasks') || '';
+      completedList.innerHTML = localStorage.getItem('completedTasks') || '';
+    }
+
+    function addTask() {
+      const taskText = taskInput.value.trim();
+      if (taskText === '') return;
+
+      const li = document.createElement('li');
+      li.innerHTML = `
+        ${taskText}
+        <span class="actions">
+          <button class="done-btn" onclick="completeTask(this)">Done</button>
+          <button class="delete-btn" onclick="deleteTask(this)">Delete</button>
+        </span>
+      `;
+      taskList.appendChild(li);
+      taskInput.value = '';
+      saveTasks();
+    }
+
+    function completeTask(btn) {
+      const li = btn.parentElement.parentElement;
+      li.classList.add('completed');
+      btn.remove();
+      completedList.appendChild(li);
+      saveTasks();
+    }
+
+    function deleteTask(btn) {
+      const li = btn.parentElement.parentElement;
+      li.remove();
+      saveTasks();
+    }
+
+    loadTasks();
+  </script>
+</body>
+</html>
