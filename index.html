@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="responsive.css">
+
+  <title>Forever Ours 💖</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #ffe4ec, #ffcad4);
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #4b2c36;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3em;
+      color: #d63384;
+      margin-bottom: 1em;
+    }
+    .days-counter {
+      text-align: right;
+      font-size: 1.2em;
+      color: #d63384;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .time-counter {
+      text-align: right;
+      font-size: 1em;
+      color: #d63384;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .nav-card {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-decoration: none;
+      color: #4b2c36;
+      box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .nav-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(255, 182, 193, 0.4);
+      background-color: #ffe4f2;
+    }
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #ff6f91;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      font-size: 1.5em;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 105, 135, 0.4);
+      animation: float 2s infinite;
+    }
+    .scroll-top:hover {
+      background-color: #e45775;
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="days-counter" id="daysCounter"></div>
+    <div class="time-counter" id="timeCounter"></div>
+    <h1>Welcome to Our Love World..!!  💖</h1>
+
+    <div class="nav-grid">
+      <a href="bucket_list.html" class="nav-card">🎯 Bucket List</a>
+      <a href="special_days.html" class="nav-card">📅 Special Days</a>
+      <a href="dni.html" class="nav-card">🌙 Date Night Ideas</a>
+      <a href="To_do_trends.html" class="nav-card">📝 Trends / Games</a>
+      <a href="Photo_gallery.html" class="nav-card">📸 Photo Gallery</a>
+      <a href="love_letters.html" class="nav-card">💌 Love Letters</a>
+      <a href="to_do_list.html" class="nav-card">📝 To do List</a>
+      <a href="cons.html" class="nav-card">📜 Our Constitution</a>
+      <a href="love_story.html" class="nav-card">📖 Our Story</a>
+      <a href="fav_things.html" class="nav-card">🎀 Fav Things</a>
+      <a href="the_vow_vault.html" class="nav-card">🤞 Vow Vault</a>
+      <a href="prev_reason_of_fight.html" class="nav-card">😅 Previous Fights</a>
+    </div>
+  </div>
+
+  <button class="scroll-top" onclick="scrollToTop()">⬆️</button>
+
+  <script>
+    const anniversary = new Date('2024-08-17T08:00:00');
+
+    function updateTime() {
+      const now = new Date();
+      let diff = Math.floor((now - anniversary) / 1000);
+
+      const days = Math.floor(diff / (3600 * 24));
+      diff %= 3600 * 24;
+      const hours = Math.floor(diff / 3600);
+      diff %= 3600;
+      const minutes = Math.floor(diff / 60);
+      const seconds = diff % 60;
+
+      document.getElementById('daysCounter').textContent = `💌 ${days} days 💌`;
+      document.getElementById('timeCounter').textContent = `❤️ ${days}:${hours}:${minutes}:${seconds} ❤️`;
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
